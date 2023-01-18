@@ -1,0 +1,25 @@
+{% extends 'SanApp/base.html' %}
+{% load static %}
+{% block contenidoQueCambia %}
+<header class="bg-danger py-5">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="text-center text-white">
+            <h1 class="display-4 fw-bolder">Clientes</h1>
+            <p class="lead fw-normal text-white-50 mb-0">        
+                {% for x in cliente %}
+                <li>{{x}}</li>
+                {% comment %} <button>
+                    <a href=""></a>
+                    <a href=""></a>
+                </button> {% endcomment %}
+                
+                {% endfor %}</p>
+        </div>
+    </div>
+</header>
+
+    <body>
+
+    </body>
+</html>
+{% endblock %}
