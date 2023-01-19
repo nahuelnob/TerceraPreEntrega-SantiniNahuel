@@ -1,25 +1,25 @@
-{% extends 'SanApp/base.html' %}
+{% extends "SanApp/base.html" %}
+
 {% load static %}
+
 {% block contenidoQueCambia %}
 <header class="bg-danger py-5">
     <div class="container px-4 px-lg-5 my-5">
         <div class="text-center text-white">
-            <h1 class="display-4 fw-bolder">Clientes</h1>
-            <p class="lead fw-normal text-white-50 mb-0">        
-                {% for x in cliente %}
-                <li>{{x}}</li>
-                {% comment %} <button>
-                    <a href=""></a>
-                    <a href=""></a>
-                </button> {% endcomment %}
-                
-                {% endfor %}</p>
+            <h1 class="display-4 fw-bolder">Buscar</h1>
+            <p class="lead fw-normal text-white-50 mb-0">Fijate si ya estan tus datos registrados</p>
         </div>
     </div>
-</header>
+</header><br>
 
-    <body>
 
-    </body>
-</html>
+<p class="d-flex justify-content-center aling-items-center">Nombre cliente:</p>
+<form action="{% url 'Buscar_cliente' %}" method="POST" class="d-flex justify-content-center aling-items-center">
+    {% csrf_token %}
+    
+        <input type="text" name="nombre" >
+        <input type="submit" value="Buscar">
+    
+</form>
+<br>
 {% endblock %}

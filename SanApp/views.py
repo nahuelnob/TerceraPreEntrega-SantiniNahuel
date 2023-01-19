@@ -21,10 +21,6 @@ def finCompra(request):
 def que_hacer(request):
     return render(request, "SanApp/que_hacer.html")
 
-def buscar_clientes(request):
-    cliente = Cliente.objects.all()
-    contexto = {"cliente":cliente}
-    return render(request, "SanApp/buscar_cliente.html", contexto)
     
 def cliente(request):
     if request.method == "POST":
@@ -77,3 +73,19 @@ def hacer_cambios(request):
         mi_formu = CambiosFormulario()
     
     return render(request, "SanApp/hacer_cambios.html", {"mi_formu":mi_formu})
+
+def buscar_cliente(request):
+    if request.method == "POST":
+        data = request.POST
+        cliente = Cliente.objects.filter(nombre__contains=data['nombre'])
+        contexto = {'cliente': cliente}
+        
+        return render (request, 'SanApp/leer_cliente.html', contexto)
+    else:
+        return render(request,"SanApp/buscar_cliente.html")
+    
+def leer_cliente(request):
+    cliente = Cliente.objects.all()
+    contexto = {"cliente":cliente}
+    return render(request, "SanApp/leer_cliente.html", contexto)
+        

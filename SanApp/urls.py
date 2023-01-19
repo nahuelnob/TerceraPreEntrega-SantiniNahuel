@@ -10,5 +10,7 @@ urlpatterns = [
     path('que_hacer/', views.que_hacer, name="Que_hacer"),
     path('hacerPedidos/', views.hacer_pedidos, name="Hacer_pedido"),
     path('hacerCambios/', views.hacer_cambios, name="Hacer_cambios"),
-    path('buscarCliente/', views.buscar_clientes, name="Buscar_cliente")
+    path('buscarCliente/', views.buscar_cliente, name="Buscar_cliente"),
+    path('leerCliente/', views.leer_cliente, name="Leer_cliente"),
+    
 ]
