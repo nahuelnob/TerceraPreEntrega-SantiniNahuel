@@ -1,0 +1,16 @@
+{% extends 'SanApp/base.html' %}
+{% load static %}
+{% block contenidoQueCambia %}
+<body>
+    <span> Vas a eliminar a {{object}} </span>
+    <form method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" value="Confirmar">
+    
+        <a href="{% url 'leer_pedidos' %}"> NO
+    </form>
+
+</body>
+</html>
+{% endblock %}

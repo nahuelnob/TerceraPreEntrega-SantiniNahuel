@@ -1,0 +1,14 @@
+{% extends 'SanApp/base.html' %}
+{% load static %}
+{% block contenidoQueCambia %}
+<body>
+    <form method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" value="Registrarse"/>
+
+    </form>
+
+</body>
+</html>
+{% endblock %}

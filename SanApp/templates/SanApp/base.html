@@ -37,6 +37,7 @@
                              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                  <li><a class="dropdown-item" href="{% url 'Comprar' %}">Comprar</a></li>
                                  <li><a class="dropdown-item" href="{% url 'Cambiar' %}">Cambiar</a></li>
+                                 <li><a class="dropdown-item" href="{% url 'leer_pedidos' %}">Pedidos</a></li>
                              </ul>
                          </li>
                      </ul>
@@ -45,9 +46,9 @@
              </div>
          </nav>
 
-         {% block contenidoQueCambia %}
+    {% block contenidoQueCambia %}
         
-         {% endblock %} 
+    {% endblock %} 
     
          <!-- Footer-->
          <footer class="py-5 bg-secondary">

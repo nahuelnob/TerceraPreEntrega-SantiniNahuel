@@ -1,0 +1,25 @@
+{% extends 'SanApp/base.html' %}
+{% load static %}
+{% block contenidoQueCambia %}
+<header class="bg-danger py-5">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="text-center text-white">
+            <h1 class="display-4 fw-bolder">Cliente</h1>
+            <p class="lead fw-normal text-white-50 mb-0">Detalle</p>
+            
+        </div>
+    </div>
+</header><br>
+    <body> 
+        <h1>{{cliente.nombre}}
+            {{cliente.apellido}}
+        </h1>
+        <b>Celular: </b>{{cliente.celular}}<br>
+        <b>Direccion: </b>{{cliente.direccion}}<br>
+        <b>Localidad: </b>{{cliente.localidad}}<br><br>
+
+        <a href="{% url 'Leer_cliente' %}"> Ver todos los clientes</a>
+    </body> 
+<br><br>
+</html>
+{% endblock %}

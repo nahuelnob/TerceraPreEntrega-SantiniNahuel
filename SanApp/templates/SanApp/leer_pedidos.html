@@ -4,29 +4,29 @@
 <header class="bg-danger py-5">
     <div class="container px-4 px-lg-5 my-5">
         <div class="text-center text-white">
-            <h1 class="display-4 fw-bolder">Clientes</h1>
-            <a href= {% url 'Crear_cliente' %}>Añadir Cliente</a> <br> <br> {% comment "" %} NUEVOOOO {% endcomment %} 
+            <h1 class="display-4 fw-bolder">Pedidos</h1>
+            <a href= {% url "Hacer_pedido" %}>Añadir Pedidos</a> <br> <br> {% comment "" %} NUEVOOOO {% endcomment %} 
             <p class="lead fw-normal text-white-50 mb-0"> 
             <table class="table">
                 <tbody>
                   {% csrf_token %}
                   <tr class="text-white-1 mb-0">
-                    <th>Cliente</th>
+                    <th>Pedido</th>
                   </tr>
-                    {% for x in cliente %}
+                    {% for y in object_list %}
                   <tr class="text-white mb-0">
-                    <td>{{x.nombre}} {{x.apellido}}</td>
+                    <td>{{y.cliente}}: {{y.cantidad}} {{y.producto}}</td>
                     <td>
-                      <a href="{% url 'detalle_cliente' x.id %}" >Ver
+                      <a href="{% url 'detalle_pedido' y.id %}" >Ver
 
                     </td>
                     <td>
-                      <a href="{% url 'editar_cliente' x.id %}"> Editar
+                      <a href="{% url 'editar_pedido' y.id %}"> Editar
                     </td>
                     <td>
-                      <form action="{% url 'eliminar_cliente' x.id %}" method="post">
+                      <a href="{% url 'borrar_pedido' y.id %}"> Eliminar
                         {% csrf_token %}
-                        <input type="submit" value="Eliminar"/>
+                      
                         <form/>
                       
                     </td>
