@@ -222,3 +222,12 @@ def login_views(request):
 class CustomLogoutView(LogoutView):
     template_name = 'SanApp/logout.html'
     next_page = reverse_lazy('Inicio')
+    
+class ProfileUpdateView(LoginRequiredMixin,UpdateView):
+    model = User
+    form_class = UserUpdateForm
+    success_url = reverse_lazy('Inicio')
+    template_name = 'SanApp/formulario_perfil.html'
+    
+    def get_object(self, queryset=None):
+        return self.request.user

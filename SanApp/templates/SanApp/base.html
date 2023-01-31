@@ -56,7 +56,7 @@
                     {% if request.user.is_authenticated %}
                 
                     <p class="text-muted small mb-4 mb-lg-0"> Hola, {{user.username}} ...</p>
-                            <a class="btn btn-outline-secondary" href="{% url 'logout' %}">Cerrar sesion</a>
+                            <a class="btn btn-outline-secondary btn-sm" href="{% url 'logout' %}">Cerrar sesion</a>
                     {% endif %}
                  </div>
              </div>
