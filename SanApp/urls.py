@@ -25,5 +25,7 @@ urlpatterns = [
     path('borrar_pedido/<int:pk>/', PedidosDeleteViews.as_view(), name="borrar_pedido"),
     path('detalle_pedido/<int:pk>/', PedidosDetailViews.as_view(), name="detalle_pedido"),
     path('registro/', registro, name='registro'),
+    path('login/', login_views, name='login'),
+    path('logout/', CustomLogoutView.as_view(), name='logout')
     
 ]

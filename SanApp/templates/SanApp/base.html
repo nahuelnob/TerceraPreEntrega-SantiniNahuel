@@ -2,6 +2,7 @@
  <html lang="en">
 
     {% load static %}
+    {% csrf_token %}
      <head>
          <meta charset="utf-8" />
          <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -32,16 +33,31 @@
                                 <li><a class="dropdown-item" href="{% url 'Nuevo_cliente' %}">Crear</a></li>
                                 <li><a class="dropdown-item" href="{% url 'Buscar_cliente' %}">Buscar</a></li>
                             </ul>
+                        </li>
                             <li class="nav-item dropdown">
                              <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Productos</a>
                              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                  <li><a class="dropdown-item" href="{% url 'Comprar' %}">Comprar</a></li>
                                  <li><a class="dropdown-item" href="{% url 'Cambiar' %}">Cambiar</a></li>
                                  <li><a class="dropdown-item" href="{% url 'leer_pedidos' %}">Pedidos</a></li>
-                             </ul>
+                            </ul>
+                            </li>
+                        
                          </li>
                      </ul>
-                     
+                     {% if not request.user.is_authenticated %}
+                     <form class="d-flex">
+                        
+                            <a class="btn btn-outline-danger" href="{% url 'login' %}">Iniciar Sesion
+                            </a>
+                        
+                    </form>
+                    {% endif %}
+                    {% if request.user.is_authenticated %}
+                
+                    <p class="text-muted small mb-4 mb-lg-0"> Hola, {{user.username}} ...</p>
+                            <a class="btn btn-outline-secondary" href="{% url 'logout' %}">Cerrar sesion</a>
+                    {% endif %}
                  </div>
              </div>
          </nav>

@@ -11,13 +11,14 @@
 </header><br>
 <!-- Section-->
 <section class="d-flex justify-content-center aling-items-center">
-    <button class="btn btn-outline-dark " type="submit">
-        <i class="bi-cart-fill me-1"></i>
-            <a href="{% url 'Hacer_pedido' %}">
+     
+    <a  class="btn btn-outline-danger" href="{% url 'Hacer_pedido' %}">
+        <i class="bi-cart-fill me-1"></i>  
+        <span class="badge bg-dark text-white ms-1 rounded-pill"></span>  
         Pedido
-            </a>
-        <span class="badge bg-dark text-white ms-1 rounded-pill"></span>
-    </button>
+        
+        
+    </a>
 </section>
          <section class="py-5">
           <div class="container px-4 px-lg-5 mt-5">

@@ -1,5 +1,12 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse, reverse_lazy
+from django.contrib.auth.models import User
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.views import LogoutView
+from django.contrib.auth import login, authenticate
+from django.contrib.auth.decorators import login_required #PARA LAS FUNCIONES
+from django.contrib.auth.mixins import LoginRequiredMixin #PARA LAS CLASES
+
 from django.http import HttpResponse
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
 from SanApp.models import *
@@ -23,7 +30,7 @@ def finCompra(request):
 def que_hacer(request):
     return render(request, "SanApp/que_hacer.html")
 
-    
+@login_required   
 def cliente(request):
     if request.method == "POST":
         mi_formu = ClienteFormulario(request.POST)
@@ -155,26 +162,26 @@ def eliminar_cliente(request, id):
         return redirect (reverse("Leer_cliente")) 
     
 
-class PedidosListView(ListView):
+class PedidosListView(LoginRequiredMixin,ListView):
     model = Pedido
     template_name = "SanApp/leer_pedidos.html"
     
-class PedidosCreateViews(CreateView):
+class PedidosCreateViews(LoginRequiredMixin,CreateView):
     model = Pedido
     url_exitosa = "SanApp/hacer_pedido.html"
     fields = ['cliente', 'producto', 'cantidad']
     
-class PedidosUpdateViews(UpdateView):
+class PedidosUpdateViews(LoginRequiredMixin,UpdateView):
     model = Pedido
     success_url = "/SanApp/leer_pedidos"
     fields = ['cliente', 'producto', 'cantidad']
     
-class PedidosDeleteViews(DeleteView):
+class PedidosDeleteViews(LoginRequiredMixin, DeleteView):
     model = Pedido
     success_url = reverse_lazy('leer_pedidos')
     template_name = 'SanApp/confirmar_eliminacion_pedido.html'
 
-class PedidosDetailViews(DetailView):
+class PedidosDetailViews(LoginRequiredMixin, DetailView):
     model = Pedido
     susuccess_url = "/SanApp/detalle_pedido"
     template_name = "SanApp/detalle_pedido.html"
@@ -191,3 +198,27 @@ def registro(request):
         contexto = {'form': formulario}
         return render (request, "SanApp/registro.html", contexto)
         
+def login_views(request):
+    next_url = request.GET.get('next')
+    if request.method == "POST":
+        form = AuthenticationForm(request, data=request.POST)
+        
+        if form.is_valid():
+            data = form.cleaned_data
+            usuario = data.get('username')
+            password = data.get('password')
+            user = authenticate(username=usuario, password=password)
+            
+            if user:
+                login(request, user)
+                if next_url:
+                    return redirect(next_url)
+                return render (request, "SanApp/inicio.html", {"mensaje":f"Bienvenido {usuario}"})
+        
+    else:
+        form = AuthenticationForm()
+    return render (request, "SanApp/login.html", {"form": form})
+    
+class CustomLogoutView(LogoutView):
+    template_name = 'SanApp/logout.html'
+    next_page = reverse_lazy('Inicio')
