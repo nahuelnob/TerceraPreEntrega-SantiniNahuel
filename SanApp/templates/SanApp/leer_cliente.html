@@ -4,8 +4,8 @@
 <header class="bg-danger py-5">
     <div class="container px-4 px-lg-5 my-5">
         <div class="text-center text-white">
-            <h1 class="display-4 fw-bolder">Clientes</h1>
-            <a href= {% url 'Crear_cliente' %}>Añadir Cliente</a> <br> <br> {% comment "" %} NUEVOOOO {% endcomment %} 
+            <h1 class="display-4 fw-bolder">Clientes</h1><br>
+            <a href= {% url 'Nuevo_cliente' %} class="btn btn-danger btn-sm">Añadir Cliente</a> <br> <br>
             <p class="lead fw-normal text-white-50 mb-0"> 
             <table class="table">
                 <tbody>
@@ -17,16 +17,16 @@
                   <tr class="text-white mb-0">
                     <td>{{x.nombre}} {{x.apellido}}</td>
                     <td>
-                      <a href="{% url 'detalle_cliente' x.id %}" >Ver
+                      <a href="{% url 'detalle_cliente' x.id %}" class="btn btn-danger btn-sm" >Ver
 
                     </td>
                     <td>
-                      <a href="{% url 'editar_cliente' x.id %}"> Editar
+                      <a href="{% url 'editar_cliente' x.id %}" class="btn btn-danger btn-sm">Editar
                     </td>
                     <td>
                       <form action="{% url 'eliminar_cliente' x.id %}" method="post">
                         {% csrf_token %}
-                        <input type="submit" value="Eliminar"/>
+                        <input type="submit" class="btn btn-danger btn-sm" value="Eliminar"/>
                         <form/>
                       
                     </td>

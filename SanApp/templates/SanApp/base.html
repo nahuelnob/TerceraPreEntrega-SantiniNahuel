@@ -42,19 +42,32 @@
                                  <li><a class="dropdown-item" href="{% url 'leer_pedidos' %}">Pedidos</a></li>
                             </ul>
                             </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Acerca de Nosotros</a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item" href="{% url 'Comprar' %}">La empresa</a></li>
+                               </ul>
+                               </li>
                         
                          </li>
                      </ul>
                      {% if not request.user.is_authenticated %}
                      <form class="d-flex">
-                            <a class="btn btn-outline-danger" href="{% url 'login' %}">Iniciar Sesion
+                            <a class="btn btn-outline-danger btn-lg" href="{% url 'login' %}">Iniciar Sesion
                             </a>
                         
                     </form>
                     {% endif %}
                     {% if request.user.is_authenticated %}
-                            <p class="text-muted small mb-4 mb-lg-0"> Hola, {{user.username}} ...</p>
-                            <a class="btn btn-outline-secondary btn-sm" href="{% url 'logout' %}">Cerrar sesion</a>
+            
+                            <li class="nav-item dropdown btn btn-outline-secondary btn-sm">
+                                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color:black"> {{user.username}} </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item" href="{% url 'logout' %}">Cerrar Sesion</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'editar_perfil' %}">Editar Perfil</a></li>
+                                </ul>
+                            </li>
+                        
                     {% endif %}
                  </div>
              </div>
@@ -70,13 +83,13 @@
                 <div class="m-0 text-center"> 
                     <ul> 
                         <li class="list-inline-item me-4">
-                            <a href="#!"><i class="bi-facebook fs-3" style="color: rgb(0, 0, 0)"></i></a>
+                            <a target="_blank" href="https://www.facebook.com/PanificadoraEstrella"><i class="bi-facebook fs-3" style="color: rgb(0, 0, 0)"></i></a>
                         </li>
                         <li class="list-inline-item me-4">
-                            <a href="#!"><i class="bi-whatsapp fs-3" style="color: rgb(0, 0, 0)"></i></a>
+                            <a target="_blank" href="https://api.whatsapp.com/send?phone=5493413353747"><i class="bi-whatsapp fs-3" style="color: rgb(0, 0, 0)"></i></a>
                         </li>
                         <li class="list-inline-item">
-                            <a href="#!"><i class="bi-instagram fs-3" style="color: rgb(0, 0, 0)"></i></a>
+                            <a target="_blank" href="https://www.instagram.com/panificadora.estrella/"><i class="bi-instagram fs-3" style="color: rgb(0, 0, 0)"></i></a>
                             
                         </li>
                     </ul>

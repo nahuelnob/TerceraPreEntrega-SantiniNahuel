@@ -10,5 +10,22 @@
         </div>
     </div>
 </header>
+<body><br>
+    <div class= "d-flex justify-content-center aling-items-center">
+        <div>
+            <a  class="btn btn-outline-danger btn-light" href="{% url 'Hacer_pedido' %}">
+                <i class="bi-cart-fill me-1"></i>  
+                <span class="badge bg-dark text-white ms-1 rounded-pill"></span>  
+                Comprar    
+            </a>
+            <a  class="btn btn-outline-danger btn-light" href="{% url 'Hacer_cambios' %}">
+                <i class="bi-cart-fill me-1"></i>  
+                <span class="badge bg-dark text-white ms-1 rounded-pill"></span>  
+                Cambiar
+            </a>
+        </div>
+    </div>
+        
+    </body><br>
 </html>
 {% endblock %}

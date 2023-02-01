@@ -48,7 +48,7 @@ def cliente(request):
     return render(request,"SanApp/nuevo_cliente.html", {"mi_formu":mi_formu})
 
 
-
+@login_required
 def hacer_pedidos(request):
     if request.method == "POST":
         mi_formu = PedidosFormulario(request.POST)
@@ -66,7 +66,7 @@ def hacer_pedidos(request):
     return render(request, "SanApp/hacer_pedido.html", {"mi_formu":mi_formu})
 
 
-
+@login_required
 def hacer_cambios(request):
     if request.method == "POST":
         mi_formu = CambiosFormulario(request.POST)
@@ -83,6 +83,7 @@ def hacer_cambios(request):
     
     return render(request, "SanApp/hacer_cambios.html", {"mi_formu":mi_formu})
 
+@login_required
 def buscar_cliente(request):
     if request.method == "POST":
         data = request.POST

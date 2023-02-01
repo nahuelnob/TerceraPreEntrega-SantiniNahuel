@@ -1,14 +1,30 @@
 {% extends 'SanApp/base.html' %}
 {% load static %}
 {% block contenidoQueCambia %}
-<body>
-    <form method="post">
-        {% csrf_token %}
-        {{form.as_p}}
-        <input type="submit" value="Registrarse"/>
+<header class="bg-danger py-2">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="text-center text-white">
+            <h1 class="display-4 fw-bolder">Registrate</h1>
+            <p class="lead fw-normal text-white-50 mb-0"></p>  
+        </div>
+    </div>
+</header>
+<body> 
+    <div class="d-flex justify-content-center aling-items-center">
+        
+       
+        <form method="post" class="margin:0 auto">
+            {% csrf_token %}
+            <table>
+                {{form.as_table}}
+            </table><br>    
+            
+            <div class="d-flex justify-content-center aling-items-center">
+                <input type="submit" class="btn btn-outline-danger" value="Registrarse"/>
+            </div><br>
 
-    </form>
-
+        </form>
+    </div>
 </body>
 </html>
 {% endblock %}

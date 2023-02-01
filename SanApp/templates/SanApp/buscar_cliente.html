@@ -13,13 +13,13 @@
 </header><br>
 
 
-<p class="d-flex justify-content-center aling-items-center">Nombre cliente:</p>
-<form action="{% url 'Buscar_cliente' %}" method="POST" class="d-flex justify-content-center aling-items-center">
-    {% csrf_token %}
-    
-        <input type="text" name="nombre" >
-        <input type="submit" value="Buscar">
-    
-</form>
-<br>
+    <p class="d-flex justify-content-center aling-items-center">Nombre cliente:</p>
+    <form action="{% url 'Buscar_cliente' %}" method="POST" class="d-flex justify-content-center aling-items-center">
+        {% csrf_token %}
+            
+            <input type="text" name="nombre" >
+            <input type="submit" class="btn btn-outline-dark btn-sm" value="Buscar">
+        
+    </form>
+    <br>
 {% endblock %}

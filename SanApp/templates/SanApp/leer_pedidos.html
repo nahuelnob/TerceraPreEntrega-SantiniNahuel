@@ -5,7 +5,7 @@
     <div class="container px-4 px-lg-5 my-5">
         <div class="text-center text-white">
             <h1 class="display-4 fw-bolder">Pedidos</h1>
-            <a class="btn btn-outline-warning btn-danger" href= {% url "Hacer_pedido" %}>Añadir Pedidos</a> <br> <br> {% comment "" %} NUEVOOOO {% endcomment %} 
+            <a class="btn btn-danger btn-sm" href= {% url "Hacer_pedido" %}>Añadir Pedidos</a> <br> <br> {% comment "" %} NUEVOOOO {% endcomment %} 
             <p class="lead fw-normal text-white-50 mb-0"> 
             <table class="table">
                 <tbody>
@@ -17,14 +17,14 @@
                   <tr class="text-white mb-0">
                     <td>{{y.cliente}}: {{y.cantidad}} {{y.producto}}</td>
                     <td>
-                      <a class="btn btn-danger" href="{% url 'detalle_pedido' y.id %}" >Ver
+                      <a class="btn btn-danger btn-sm" href="{% url 'detalle_pedido' y.id %}" >Ver
 
                     </td>
                     <td>
-                      <a class="btn btn-outline-warning btn-danger" href="{% url 'editar_pedido' y.id %}"> Editar
+                      <a class="btn btn-danger btn-sm" href="{% url 'editar_pedido' y.id %}"> Editar
                     </td>
                     <td>
-                      <a class="btn btn-outline-warning btn-danger" href="{% url 'borrar_pedido' y.id %}"> Eliminar
+                      <a class="btn btn-danger btn-sm" href="{% url 'borrar_pedido' y.id %}"> Eliminar
                         {% csrf_token %}
                       
                         <form/>

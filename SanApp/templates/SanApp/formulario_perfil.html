@@ -1,20 +1,30 @@
 {% extends 'SanApp/base.html' %}
 {% load static %}
 {% block contenidoQueCambia %}
-
-<p>Tu nombre de usuario es <b>{{object.username}}</b></p>
-
-<h3>Editar datos:
-    <form method="post">
-    {% csrf_token %}
-    {{form.as_p}}
-    <input type="submit" value="Guardar">
-
+<header class="bg-danger py-5">
+    <div class="container px-4 px-lg-5 my-3">
+        <div class="text-center text-white">
+            <h1 class="display-4 fw-bolder">Cliente</h1>
+            <p class="lead fw-normal text-white-50 mb-0">Detalle</p>
+            
+        </div>
+    </div>
+</header><br>
+<body>
+    <div  class="d-flex justify-content-center aling-items-center">
+        <h3>Usuario: <b>{{object.username}}</b></h3>
+    </div>
+    <table class="d-flex justify-content-center aling-items-center">
+        <h3 class="d-flex justify-content-center aling-items-center">Editar datos:</h3>
+        <form method="post">
+        {% csrf_token %}
+        {{form.as_table}}
+    </table><br>
+        <div class="d-flex justify-content-center aling-items-center">
+            <input type="submit" class="btn btn-outline-dark btn-sm" value="Guardar">
+        </div>
+    
     </form>
-</h3>
 
-
-
-
-
+</body><br>
 {% endblock  %}

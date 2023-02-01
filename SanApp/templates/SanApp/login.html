@@ -8,13 +8,23 @@
             <p class="lead fw-normal text-white-50 mb-0">Bienvenidos</p>
         </div>
     </div>
-</header>
+</header><br>
 <body>
-<form action="" method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Iniciar Sesion"/>
-</form>
-</body>
+    <div class="d-flex justify-content-center aling-items-center">
+        <form action="" method="post">
+        {% csrf_token %}
+            <table>
+                {{ form.as_table }}
+            </table><br>
+            <div class="d-flex justify-content-center aling-items-center">
+                <input type="submit" class="btn btn-outline-danger " value="Iniciar Sesion"/>
+            </div><br>
+            <div class="d-flex justify-content-center aling-items-center"> <h5>Si no tenes usuario</h5>
+                {% csrf_token %}
+               <a class="btn btn-outline-dark btn-light btn-sm"  href="{% url 'registro' %}"> Registrate</a>
+            </div>
+        </form>
+    </div>
+</body><br>   
 
 {% endblock %}

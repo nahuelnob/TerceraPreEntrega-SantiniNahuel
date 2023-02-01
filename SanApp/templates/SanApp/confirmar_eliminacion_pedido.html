@@ -1,16 +1,27 @@
 {% extends 'SanApp/base.html' %}
 {% load static %}
 {% block contenidoQueCambia %}
+<header class="bg-danger py-5">
+    <div class="container px-4 px-lg-5 my-2">
+        <div class="text-center text-white">
+            <h2 class="display-4 fw-bolder">Eliminar pedido</h2>
+            <p class="lead fw-normal text-white-50 mb-0"></p>
+        </div>
+    </div>
+</header><br><br>
 <body>
-    <span> Vas a eliminar a {{object}} </span>
-    <form method="post">
-        {% csrf_token %}
-        {{form.as_p}}
-        <input type="submit" value="Confirmar">
-    
-        <a href="{% url 'leer_pedidos' %}"> NO
-    </form>
-
+    <span class="d-flex justify-content-center aling-items-center"><b> Vas a eliminar: </b>{{ object}} </span>
+    <div class="d-flex justify-content-center aling-items-center">
+        <form method="post">
+            {% csrf_token %}
+            {{form.as_p}}
+                <input type="submit" class="btn btn-outline-dark btn-sm" value="Confirmar">
+            
+                <a class="btn btn-outline-dark btn-sm" href="{% url 'leer_pedidos' %}"> Cancelar
+                </a>
+            
+        </form>  
+    </div><br>
 </body>
-</html>
+
 {% endblock %}

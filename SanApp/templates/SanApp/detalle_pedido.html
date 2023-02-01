@@ -1,23 +1,31 @@
 {% extends 'SanApp/base.html' %}
 {% load static %}
 {% block contenidoQueCambia %}
-<header class="bg-danger py-5">
+<header class="bg-danger py-3">
     <div class="container px-4 px-lg-5 my-5">
         <div class="text-center text-white">
-            <h1 class="display-4 fw-bolder">Cliente</h1>
+            <h1 class="display-4 fw-bolder">Pedido</h1>
             <p class="lead fw-normal text-white-50 mb-0">Detalle</p>
             
         </div>
     </div>
 </header><br>
-    <body> 
-        <h1>{{pedido.cliente}}
-        
-        </h1>
-        <b>Cantidad: </b>{{pedido.cantidad}}<br>
-        <b>Producto: </b>{{pedido.producto}}<br><br>
+    <body>
+        <div>
+            <div class="d-flex justify-content-center aling-items-center">
+                <h1>{{pedido.cliente}}</h1>
+            </div><br>
+            <table>
+                <div class="d-flex justify-content-center aling-items-center">
+                    <b>Producto: </b>{{pedido.producto}}
+                </div><br>
+                <div class="d-flex justify-content-center aling-items-center">
+                    <b>Cantidad: </b>{{pedido.cantidad}}
+                </div><br><br>
 
-        <a href="{% url 'leer_pedidos' %}"> Ver todos los pedidos</a>
+                <div class="d-flex justify-content-center aling-items-center">
+                    <a class="btn btn-outline-danger btn-light btn-sm"  href="{% url 'leer_pedidos' %}"> Ver todos los pedidos</a>
+                </div>
     </body> 
 <br><br>
 </html>
