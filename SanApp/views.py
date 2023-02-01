@@ -228,12 +228,13 @@ def login_views(request):
             usuario = data.get('username')
             password = data.get('password')
             user = authenticate(username=usuario, password=password)
+            url_exitosa = reverse('Inicio')
             
             if user:
                 login(request, user)
                 if next_url:
                     return redirect(next_url)
-                return render (request, "SanApp/inicio.html", {"mensaje":f"Bienvenido {usuario}"})
+            return redirect(url_exitosa)
         
     else:
         form = AuthenticationForm()
@@ -251,21 +252,3 @@ class ProfileUpdateView(LoginRequiredMixin,UpdateView):
     
     def get_object(self, queryset=None):
         return self.request.user
-
-# def agregar_avatar(request):
-#     if request.method == "POST":
-#         formulario = AvatarFormulario(request.POST, request.FILES) # Aquí me llega toda la info del formulario html
-
-#         if formulario.is_valid():
-#             avatar = formulario.save()
-#             avatar.user = request.user
-#             avatar.save()
-#             url_exitosa = reverse('Inicio')
-#             return redirect(url_exitosa)
-#     else:  # GET
-#         formulario = AvatarFormulario()
-#     return render(
-#         request=request,
-#         template_name='SanApp/formulario_avatar.html',
-#         context={'form': formulario},
-#     )

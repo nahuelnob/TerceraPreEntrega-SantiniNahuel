@@ -25,9 +25,4 @@ class Cambios(models.Model):
     def __str__(self):
         return f"Cambios: {self.cantidad} {self.producto} debido a {self.motivo} para {self.cliente}"
     
-class Avatar(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
-    imagen = models.ImageField(upload_to='avatares', null=True, blank=True)
-    def __str__(self):
-        return f"{self.user} - {self.imagen}"
-    
+
