@@ -186,17 +186,37 @@ class PedidosDetailViews(LoginRequiredMixin, DetailView):
     susuccess_url = "/SanApp/detalle_pedido"
     template_name = "SanApp/detalle_pedido.html"
     
-def registro(request):
-    if request.method == "POST":
-        formulario = UserRegisterForm(request.POST)
+# def registro(request):
+#     if request.method == "POST":
+#         formulario = UserRegisterForm(request.POST)
         
-        if formulario.is_valid():
-            formulario.save()
-            return redirect (reverse("Inicio"))
-    else:
-        formulario = UserRegisterForm()
-        contexto = {'form': formulario}
-        return render (request, "SanApp/registro.html", contexto)
+#         if formulario.is_valid():
+#             formulario.save()
+#             url_exitosa = "SanApp/incio.html"
+#             return redirect (reverse(url_exitosa))
+           
+#     else:
+#         formulario = UserRegisterForm()
+#         contexto = {'form': formulario}
+#         return render (request, "SanApp/inicio.html", contexto)
+
+def registro(request):
+
+      if request.method == 'POST':
+
+            form = UserCreationForm(request.POST)
+            form = UserRegisterForm(request.POST)
+            if form.is_valid():
+
+                  username = form.cleaned_data['username']
+                  form.save()
+                  return render(request,"SanApp/inicio.html" ,  {"mensaje":"Usuario Creado :)"})
+
+      else:
+            form = UserCreationForm()       
+            form = UserRegisterForm()     
+
+      return render(request,"SanApp/registro.html" ,  {"form":form})
         
 def login_views(request):
     next_url = request.GET.get('next')
@@ -232,20 +252,20 @@ class ProfileUpdateView(LoginRequiredMixin,UpdateView):
     def get_object(self, queryset=None):
         return self.request.user
 
-def agregar_avatar(request):
-    if request.method == "POST":
-        formulario = AvatarFormulario(request.POST, request.FILES) # Aquí me llega toda la info del formulario html
+# def agregar_avatar(request):
+#     if request.method == "POST":
+#         formulario = AvatarFormulario(request.POST, request.FILES) # Aquí me llega toda la info del formulario html
 
-        if formulario.is_valid():
-            avatar = formulario.save()
-            avatar.user = request.user
-            avatar.save()
-            url_exitosa = reverse('Inicio')
-            return redirect(url_exitosa)
-    else:  # GET
-        formulario = AvatarFormulario()
-    return render(
-        request=request,
-        template_name='SanApp/formulario_avatar.html',
-        context={'form': formulario},
-    )
+#         if formulario.is_valid():
+#             avatar = formulario.save()
+#             avatar.user = request.user
+#             avatar.save()
+#             url_exitosa = reverse('Inicio')
+#             return redirect(url_exitosa)
+#     else:  # GET
+#         formulario = AvatarFormulario()
+#     return render(
+#         request=request,
+#         template_name='SanApp/formulario_avatar.html',
+#         context={'form': formulario},
+#     )

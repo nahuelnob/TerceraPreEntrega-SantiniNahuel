@@ -6,3 +6,5 @@ admin.site.register(Cliente)
 admin.site.register(Pedido)
 
 admin.site.register(Cambios)
+
+admin.site.register(Avatar)

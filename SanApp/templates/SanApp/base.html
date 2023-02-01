@@ -54,8 +54,7 @@
                     </form>
                     {% endif %}
                     {% if request.user.is_authenticated %}
-                
-                    <p class="text-muted small mb-4 mb-lg-0"> Hola, {{user.username}} ...</p>
+                            <p class="text-muted small mb-4 mb-lg-0"> Hola, {{user.username}} ...</p>
                             <a class="btn btn-outline-secondary btn-sm" href="{% url 'logout' %}">Cerrar sesion</a>
                     {% endif %}
                  </div>
