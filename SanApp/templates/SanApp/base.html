@@ -45,7 +45,8 @@
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Acerca de Nosotros</a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item" href="{% url 'Comprar' %}">La empresa</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'la_empresa' %}">La empresa</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'leer_comentarios' %}">Comentanos</a></li>
                                </ul>
                                </li>
                         
@@ -60,7 +61,8 @@
                     {% endif %}
                     {% if request.user.is_authenticated %}
             
-                            <li class="nav-item dropdown btn btn-outline-secondary btn-sm">
+                            <li class="nav-item dropdown btn btn-outline-secondary btn-sm position-relative">
+                                    <span class="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle"></span>
                                 <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color:black"> {{user.username}} </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <li><a class="dropdown-item" href="{% url 'logout' %}">Cerrar Sesion</a></li>

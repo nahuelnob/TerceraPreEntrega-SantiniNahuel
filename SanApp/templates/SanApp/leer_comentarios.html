@@ -1,0 +1,44 @@
+{% extends 'SanApp/base.html' %}
+{% load static %}
+{% block contenidoQueCambia %}
+<header class="bg-danger py-5">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="text-center text-white">
+            <h1 class="display-4 fw-bolder">Comentarios</h1>
+            <a class="btn btn-danger btn-sm" href= {% url "crear_comentario" %}>Deja tu comentario</a> <br> <br> {% comment "" %} NUEVOOOO {% endcomment %} 
+            <p class="lead fw-normal text-white-50 mb-0"> 
+            <table class="table">
+                <tbody>
+                  {% csrf_token %}
+                  <tr class="text-white-1 mb-0">
+                    <th style="color:white">Usuario</th>
+                  </tr>
+                    {% for y in object_list %}
+                  <tr class="text-white mb-0">
+                    <td>{{y.usuario}}</td>
+                    <td>
+                      <a class="btn btn-danger btn-sm" href="{% url 'detalle_comentario' y.id %}" >Ver comentario
+
+                    </td>
+
+                  </tr>
+                  
+                </tbody>
+                {% endfor %}
+            </table> 
+
+                {% comment %} <button>
+                    <a href=""></a>
+                    <a href=""></a>
+                </button> {% endcomment %}
+                
+                </p>
+        </div>
+    </div>
+</header>
+
+    <body>
+
+    </body>
+</html>
+{% endblock %}

@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.models import User
+from django.contrib.auth.forms import User
 import email
 
 
@@ -21,6 +21,10 @@ class CambiosFormulario(forms.Form):
     producto = forms.CharField(max_length=50)
     cantidad = forms.IntegerField()
     motivo = forms.CharField(max_length=500)
+
+class ComentariosFormulario(forms.Form):
+    usuario = forms.CharField(max_length=50)
+    comentario = forms.CharField(max_length=248)
  
  
 class UserRegisterForm(UserCreationForm):

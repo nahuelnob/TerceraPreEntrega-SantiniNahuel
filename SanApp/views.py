@@ -15,6 +15,7 @@ from SanApp.forms import UserRegisterForm
 
 
 
+
 def inicio(request):
     return render(request, "SanApp/inicio.html")
 
@@ -253,3 +254,40 @@ class ProfileUpdateView(LoginRequiredMixin,UpdateView):
     
     def get_object(self, queryset=None):
         return self.request.user
+    
+def la_empresa(request):
+    return render(request, "SanApp/empresa.html")
+
+class ComentarioLw(ListView):
+    model = Comentario
+    template_name = "SanApp/leer_comentarios.html"
+    
+# class ComentarioCV(LoginRequiredMixin,CreateView):
+#     model = Comentario
+#     url_exitosa = "SanApp/leer_comentarios.html"
+#     fields = ['usuario', 'comentario']
+def crear_comentario(request):
+    if request.method == "POST":
+        mi_formula = ComentariosFormulario(request.POST)
+        print(mi_formula)
+        
+        if mi_formula.is_valid:
+            informacion = mi_formula.cleaned_data
+            comentario = Comentario(usuario=informacion["usuario"], comentario=informacion["comentario"])
+            comentario.save()
+            return redirect(reverse('leer_comentarios'))
+    
+    else:
+        mi_formula = ComentariosFormulario()
+    
+    return render(request, "SanApp/crear_comentario.html", {"mi_formula":mi_formula})
+
+class ComentarioDV(LoginRequiredMixin, DeleteView):
+    model = Comentario
+    success_url = reverse_lazy('leer_comentarios')
+    template_name = 'SanApp/confirmar_eliminacion_comentario.html'
+    
+class ComentarioDeV(LoginRequiredMixin, DetailView):
+    model = Comentario
+    susuccess_url = "/SanApp/detalle_comentario"
+    template_name = "SanApp/detalle_comentario.html"

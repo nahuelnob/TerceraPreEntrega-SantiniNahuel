@@ -25,4 +25,9 @@ class Cambios(models.Model):
     def __str__(self):
         return f"Cambios: {self.cantidad} {self.producto} debido a {self.motivo} para {self.cliente}"
     
-
+class Comentario(models.Model):
+    usuario = models.CharField(max_length=50)
+    comentario = models.CharField(max_length=248)
+    
+    def __str__(self):
+        return f"{self.usuario}: {self.comentario}"
