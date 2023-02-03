@@ -11,11 +11,11 @@
                 <tbody>
                   {% csrf_token %}
                   <tr class="text-white-1 mb-0">
-                    <th style="color:white">Pedido</th>
+                    <th style="color:white">Cliente</th>
                   </tr>
                     {% for y in object_list %}
                   <tr class="text-white mb-0">
-                    <td>{{y.cliente}}: {{y.cantidad}} {{y.producto}}</td>
+                    <td>{{y.cliente}}</td>
                     <td>
                       <a class="btn btn-danger btn-sm" href="{% url 'detalle_pedido' y.id %}" >Ver
 

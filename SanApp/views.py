@@ -156,7 +156,8 @@ def editar_cliente(request,id):
         mi_formu = ClienteFormulario(initial=inicial)
     
     return render(request,"SanApp/nuevo_cliente.html", {"mi_formu":mi_formu,"id":id})
-        
+
+@login_required        
 def eliminar_cliente(request, id):
     cliente = Cliente.objects.get(id=id)
     if request.method == "POST":
@@ -262,10 +263,8 @@ class ComentarioLw(ListView):
     model = Comentario
     template_name = "SanApp/leer_comentarios.html"
     
-# class ComentarioCV(LoginRequiredMixin,CreateView):
-#     model = Comentario
-#     url_exitosa = "SanApp/leer_comentarios.html"
-#     fields = ['usuario', 'comentario']
+
+@login_required 
 def crear_comentario(request):
     if request.method == "POST":
         mi_formula = ComentariosFormulario(request.POST)
@@ -281,11 +280,6 @@ def crear_comentario(request):
         mi_formula = ComentariosFormulario()
     
     return render(request, "SanApp/crear_comentario.html", {"mi_formula":mi_formula})
-
-class ComentarioDV(LoginRequiredMixin, DeleteView):
-    model = Comentario
-    success_url = reverse_lazy('leer_comentarios')
-    template_name = 'SanApp/confirmar_eliminacion_comentario.html'
     
 class ComentarioDeV(LoginRequiredMixin, DetailView):
     model = Comentario

@@ -31,7 +31,6 @@ urlpatterns = [
     path('la_empresa/', la_empresa, name="la_empresa"),
     path('leer_comentarios', ComentarioLw.as_view(), name="leer_comentarios"),
     path('crear_comentario', crear_comentario, name="crear_comentario"),
-    path('borrar_comentario/<int:pk>/', ComentarioDV.as_view(), name="borrar_comentario"),
     path('detalle_comentario/<int:pk>/', ComentarioDeV.as_view(), name='detalle_comentario'),
     
 ]
